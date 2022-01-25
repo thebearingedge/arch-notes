@@ -57,7 +57,7 @@ swapon /dev/sda2
 # Installation
 
 # Install the base OS on the mounted partition(s)
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-firmware man-db
 # Create a file system table for the base installation
 genfstab -U /mnt >> /mnt/etc/fstab
 
