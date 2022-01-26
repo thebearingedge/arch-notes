@@ -1,0 +1,19 @@
+#!/bin/sh
+
+aur() {
+  for package in "${@}"; do
+    repository="https://aur.archlinux.org/$package.git"
+    directory="${2:-/tmp/$repository}"
+    git clone "$repository" "$directory"
+    (
+      cd "$directory" &&
+      makepkg --noconfirm --syncdeps --install --rmdeps --clean
+    )
+    rm -rf "$directory"
+    unset package repository directory
+  done
+}
+
+yeet() {
+  pacman -Rcs "${@}"
+}

@@ -10,9 +10,4 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xdpyinfo xorg-xrandr
 # Environment
 pacman -S --noconfirm picom i3-gaps rofi alacritty ttf-hack ttf-overpass feh
 
-git clone https://aur.archlinux.org/polybar.git
-(
-  cd polybar &&
-  makepkg --noconfirm --syncdeps --install --rmdeps --clean
-)
-rm -rf polybar
+aur polybar
