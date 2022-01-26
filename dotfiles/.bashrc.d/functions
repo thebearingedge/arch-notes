@@ -13,7 +13,3 @@ aur() {
     unset package repository directory
   done
 }
-
-yeet() {
-  pacman -Rcs "${@}"
-}
