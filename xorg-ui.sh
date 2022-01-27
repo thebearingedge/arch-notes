@@ -11,9 +11,16 @@ pacman -S --noconfirm \
   xorg-xdpyinfo \
   xorg-xrandr \
   xorg-xprop \
-  xorg-xset
+  xorg-xset \
+  xclip
 
 # Environment
-pacman -S --noconfirm picom i3-gaps rofi alacritty ttf-hack ttf-overpass feh
+pacman -S --noconfirm picom \
+  i3-gaps \
+  rofi \
+  alacritty \
+  ttf-hack \
+  ttf-overpass \
+  feh
 
 aur polybar
