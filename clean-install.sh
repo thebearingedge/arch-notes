@@ -76,7 +76,7 @@ echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 # Network
 echo 'arch-aarch64' > /etc/hostname
 # Get ethernet link
-LINK="$(networkctl list -l | grep ether | awk '{$1=$1};1{print$2}')"
+LINK="$(networkctl list -l | grep ether | awk '{$1=$1};{print$2}')"
 # Enable DHCP
 cat << EOF > /etc/systemd/network/20-wired.network
 [Match]
