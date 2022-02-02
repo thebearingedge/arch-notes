@@ -4,7 +4,7 @@
 #
 # It's not meant to be run as a script, but can be followed to set up
 # an aarch64 base installation in a Parallels virtual machine
-# using an ISO from https://github.com/JackMyers001/archiso-aarch64/releases
+# https://wiki.archlinux.org/title/Archboot
 
 # Parallels VM
 ## Create an "Other Linux" VM.
