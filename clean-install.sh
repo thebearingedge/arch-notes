@@ -31,14 +31,14 @@ lsblk
 # Partition the virtual hard disk
 fdisk /dev/sda
 # Start a GUID Partition Table (GPT)
-# /dev/sda1 EFI Partition 256M (for /boot)
-# /dev/sda2 Linux Swap Partition 1G or more, depending on RAM available
+# /dev/sda1 EFI Partition 128M (for /boot)
+# /dev/sda2 Linux Swap Partition 1G or more, depending on RAM (optional)
 # /dev/sda3 Linux File System (for /)
 
 # Disk Formatting
 
-# FAT 32 EFI Partition
-mkfs.fat -F32 /dev/sda1
+# EFI Partition
+mkfs.vfat /dev/sda1
 # Swap Partition
 mkswap /dev/sda2
 # Root Partition
@@ -57,8 +57,17 @@ swapon /dev/sda2
 # Installation
 
 # Install the base OS on the mounted partition(s)
-pacstrap /mnt base linux linux-firmware man-db
-# Create a file system table for the base installation
+pacstrap /mnt \
+  base \
+  base-devel \
+  linux \
+  linux-headers \
+  linux-firmware \
+  grub \
+  efibootmgr \
+  man-db \
+  htop
+## Create a file system table for the base installation
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Base Configuration
@@ -74,13 +83,11 @@ echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
 # Network
-echo 'arch-aarch64' > /etc/hostname
+echo 'arch' > /etc/hostname
 # Get ethernet link
-LINK="$(networkctl list -l | grep ether | awk '{$1=$1};{print$2}')"
-# Enable DHCP
 cat << EOF > /etc/systemd/network/20-wired.network
 [Match]
-Name=$LINK
+Name=eth* en*
 
 [Network]
 DHCP=yes
@@ -89,15 +96,16 @@ EOF
 systemctl enable systemd-networkd systemd-resolved
 
 # Install GRUB bootloader
-pacman -S grub efibootmgr
 grub-install --efi-directory=/boot --bootloader-id=GRUB
+## disable grub menu timeout
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 
+
 ## FIX FIX FIX ##
-## This is needed to fix a misnamed linux image file in /boot
-## I have not idea why the name needs to be changed or how to tell grub otherwise
+## This is needed to fix a misnamed linux kernek image file in /boot
+## grub only looks for vmlinu(x|z)-* kernels
 mv /boot/Image.gz /boot/vmlinuz-linux
-## otherwise, the kernel image isn't used by grub
+## otherwise, the kernel image isn't used by grub and the system won't boot
 
 # Setup GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
