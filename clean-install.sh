@@ -65,6 +65,7 @@ pacstrap /mnt \
   linux-firmware \
   grub \
   efibootmgr \
+  dosfstools \
   bash-completion \
   man-db \
   htop
