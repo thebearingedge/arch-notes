@@ -65,6 +65,7 @@ pacstrap /mnt \
   linux-firmware \
   grub \
   efibootmgr \
+  bash-completion \
   man-db \
   htop
 ## Create a file system table for the base installation
