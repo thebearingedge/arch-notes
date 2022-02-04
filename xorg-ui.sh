@@ -7,20 +7,17 @@
 # X.org
 pacman -S --noconfirm \
   xorg-server \
-  xorg-xinit \
-  xorg-xdpyinfo \
-  xorg-xrandr \
-  xorg-xprop \
-  xorg-xset \
+  xorg-apps \
   xclip
 
 # Environment
-pacman -S --noconfirm picom \
+pacman -S --noconfirm \
+  picom \
   i3-gaps \
   rofi \
   alacritty \
   ttf-hack \
-  ttf-overpass \
+  noto-fonts \
   feh
 
 aur polybar
