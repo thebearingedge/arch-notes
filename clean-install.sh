@@ -68,7 +68,8 @@ pacstrap /mnt \
   dosfstools \
   bash-completion \
   man-db \
-  htop
+  htop \
+  tree
 ## Create a file system table for the base installation
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -104,7 +105,7 @@ sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub
 
 
 ## FIX FIX FIX ##
-## This is needed to fix a misnamed linux kernek image file in /boot
+## This is needed to fix a misnamed linux kernel image file in /boot
 ## grub only looks for vmlinu(x|z)-* kernels
 mv /boot/Image.gz /boot/vmlinuz-linux
 ## otherwise, the kernel image isn't used by grub and the system won't boot
