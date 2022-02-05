@@ -115,6 +115,9 @@ mv /boot/Image.gz /boot/vmlinuz-linux
 # Setup GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# Enable Parallel Pacman Downloads
+sed -i 's/#ParallelDownloads/ParalleleDownloads/' /etc/pacman.conf
+
 # Set root password
 passwd
 
