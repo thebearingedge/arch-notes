@@ -69,7 +69,9 @@ pacstrap /mnt \
   bash-completion \
   man-db \
   htop \
-  tree
+  tree \
+  sudo \
+  xdg-user-dirs
 ## Create a file system table for the base installation
 genfstab -U /mnt >> /mnt/etc/fstab
 
