@@ -8,6 +8,7 @@
 pacman -S --noconfirm \
   xorg-server \
   xorg-apps \
+  xorg-xinit \
   xclip
 
 # Environment
