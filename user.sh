@@ -3,7 +3,7 @@
 # User account (e.g. me)
 # For a regular user account, i'll add "well known directories"
 # and sudo privileges w/out password
-pacman -S xdg-user-dirs sudo stow
+pacman -S xdg-user-dirs sudo
 me="<you>"
 useradd -m "$me"
 passwd "$me"
