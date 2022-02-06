@@ -2,7 +2,7 @@
 
 # I'll use the X Window System
 # Wayland might be workable, but that would be a separate writeup.
-# I just haven't done the research yet.
+# edit: I have tried Wayland in a Parallels VM (laggy cursor) and on Rpi4 (Manjaro, only 30fps)
 
 # X.org
 pacman -S --noconfirm \
